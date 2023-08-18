@@ -7,8 +7,8 @@ import bisect
 
 model_id = "meta-llama/Llama-2-7b-hf"
 TIMESTAMP = r"^\[\d{2}\/\d{2}\/\d{4}\ \d{1,2}:\d{2}\ (?:AM|PM)\]\ .+$"
-MAX_TOKENS = 4096 - 256 # Leave some space for the answer
-MAX_LINES = 256 # We don't want too many lines of context... right?
+MAX_TOKENS = 1024 - 256 # Leave some space for the answer
+MAX_LINES = 64 # We don't want too many lines of context... right?
 
 with open('shitverse.txt') as f:
     data = f.readlines()
