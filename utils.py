@@ -1,3 +1,5 @@
+
+# I stole this hehehehahahha
 def print_trainable_parameters(model):
     trainable_params = 0
     all_param = 0
