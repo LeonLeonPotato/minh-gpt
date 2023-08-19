@@ -7,3 +7,4 @@ trl
 peft
 bitsandbytes
 scipy
+wandb

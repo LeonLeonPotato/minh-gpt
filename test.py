@@ -1,15 +1,17 @@
-import re
+import json
+import matplotlib.pyplot as plt
+import numpy as np
 
-LINK_PATTERN = r"\b(?:https?://)?(?:(?i:[a-z]+\.)+)[^\s,]+\b"
-LINKS = [
-    "images-ext-1.discordapp.net",
-    "images-ext-2.discordapp.net",
-    "images-ext-3.discordapp.net",
-    "images-ext-4.discordapp.net",
-    "cdn.discordapp.com",
-    "tenor.com",
-    "giphy.com",
-    "media.tenor.com",
-    "media.giphy.com",
-    "i.imgur.com"
-]
+data = []
+with open('results.jsonl') as f:
+    for l in f.readlines():
+        data.append(json.loads(l)['loss'])
+
+x = np.linspace(1, len(data), len(data))
+A, B = np.polyfit(np.log(x), data, 1)
+y = A * np.log(np.linspace(1, len(data) * 5, len(data) * 5)) + B
+
+plt.plot(y)
+plt.plot(np.convolve(data, np.ones(10), 'valid') / 10)
+plt.plot(data)
+plt.show()

@@ -8,6 +8,7 @@ from transformers import (
 )
 
 model_id = "meta-llama/Llama-2-7b-hf"
+# model_id = "gpt2"
 
 nf4_config = BitsAndBytesConfig(
    load_in_4bit=True,
